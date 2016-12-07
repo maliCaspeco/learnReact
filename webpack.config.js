@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: [ "webpack/hot/dev-server" ],
     output: {
         filename: "bundle.js",
         path: __dirname + "/dist"
@@ -10,7 +10,7 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
     },
 
     module: {
@@ -18,9 +18,9 @@ module.exports = {
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/,
               exclude: /node_modules/,
-              loaders: [ "react-hot-loader/webpack", "awesome-typescript-loader" ] },
-            { test: /\.jsx$/,
-              exlude: /node_modules/,
+              loaders: [ "react-hot-loader/webpack", "ts-loader" ] },
+            { test: /\.jsx?$/,
+              exclude: /node_modules/,
               loaders: [ "react-hot-loader/webpack", "babel-loader" ] }
         ],
 
